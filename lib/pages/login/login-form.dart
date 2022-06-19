@@ -1,8 +1,8 @@
 import 'dart:ui';
 
-import 'package:dvot_dashboard_init/pages/class/custom-toast.dart';
+import 'package:dvot_dashboard_init/class/custom-toast.dart';
 import 'package:dvot_dashboard_init/pages/dashboard/dashboard.dart';
-import 'package:dvot_dashboard_init/pages/services/apiService.dart';
+import 'package:dvot_dashboard_init/services/apiService.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 

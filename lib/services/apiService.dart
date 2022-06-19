@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:dvot_dashboard_init/pages/class/api-response.dart';
+import 'package:dvot_dashboard_init/class/api-response.dart';
 import 'package:http/http.dart' as http;
 
 import '../class/user.dart';

@@ -1,10 +1,10 @@
-import 'package:dvot_dashboard_init/widgets/sidebar/side-bar.dart';
 import 'package:flutter/material.dart';
 
-class Dashboard extends StatelessWidget {
-  static String routeName = "Dashboard";
+import '../../widgets/sidebar/side-bar.dart';
 
-  const Dashboard({Key? key}) : super(key: key);
+class Users extends StatelessWidget {
+  static String routeName = "Utilisateurs";
+  const Users({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class Dashboard extends StatelessWidget {
       children: [
         Expanded(
           child: SideBar(
-            routeName: Dashboard.routeName,
+            routeName: Users.routeName,
           ),
           flex: 1,
         ),
