@@ -7,17 +7,20 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: const [
-        Expanded(
-          child: SideBarLogin(),
-          flex: 1,
-        ),
-        Expanded(
-          child: LoginForm(),
-          flex: 3,
-        ),
-      ],
+    return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      body: Row(
+        children: const [
+          Expanded(
+            child: SideBarLogin(),
+            flex: 1,
+          ),
+          Expanded(
+            child: LoginForm(),
+            flex: 3,
+          ),
+        ],
+      ),
     );
   }
 }

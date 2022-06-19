@@ -1,10 +1,10 @@
 import 'dart:ui';
 
+import 'package:dvot_dashboard_init/class/api-response.dart';
 import 'package:dvot_dashboard_init/class/custom-toast.dart';
 import 'package:dvot_dashboard_init/pages/dashboard/dashboard.dart';
-import 'package:dvot_dashboard_init/services/apiService.dart';
+import 'package:dvot_dashboard_init/services/api/auth-service.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -106,27 +106,23 @@ class _LoginFormState extends State<LoginForm> {
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   Theme.of(context).primaryColor)),
                           onPressed: () async {
-                            var success;
+                            ApiResponse success;
                             if (emailController.text == "" ||
                                 passwordController.text == "") {
                               CustomToast.showSuccessToast(
                                   msg: "Veuillez renseigner tous les champs",
                                   context: context);
                             } else {
-                              success = await ApiServices.login(
+                              success = await AuthService.login(
                                   emailController.text,
                                   passwordController.text);
-                              if (success) {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const Dashboard()));
+                              if (!success.error) {
+                                Navigator.of(context).pushNamed(Dashboard.routeName);
                                 CustomToast.showSuccessToast(
-                                    msg: "Connexion reussie", context: context);
+                                    msg: success.message, context: context);
                               } else {
                                 CustomToast.showErrorToast(
-                                    msg: "Connexion echouée", context: context);
+                                    msg: success.message, context: context);
                               }
                             }
                           },

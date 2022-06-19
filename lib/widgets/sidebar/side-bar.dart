@@ -33,6 +33,11 @@ class SideBar extends StatelessWidget {
             name: "Directs",
             route: routeName,
           ),
+          SideBarElement(
+            icon: Icons.exit_to_app,
+            name: "Déconnexion",
+            route: routeName,
+          ),
         ],
       ),
     );

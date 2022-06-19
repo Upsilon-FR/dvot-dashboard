@@ -1,11 +1,12 @@
-import 'package:dvot_dashboard_init/pages/users/users-content.dart';
+import 'package:dvot_dashboard_init/pages/directs/directs-content.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/sidebar/side-bar.dart';
 
-class Users extends StatelessWidget {
-  static const String routeName = "Utilisateurs";
-  const Users({Key? key}) : super(key: key);
+class Directs extends StatelessWidget {
+  static const String routeName = "Directs";
+
+  const Directs({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +16,12 @@ class Users extends StatelessWidget {
         children: const [
           Expanded(
             child: SideBar(
-              routeName: Users.routeName,
+              routeName: routeName,
             ),
             flex: 1,
           ),
           Expanded(
-            child: UsersContent(),
+            child: DirectsContent(),
             flex: 6,
           )
         ],
