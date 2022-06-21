@@ -18,6 +18,9 @@ class DirectsService {
         }
     );
     print(response.body);
+    if(response.statusCode != 200){
+      return ApiResponse(error: true, message: "Opération Impossible, veuillez réessayer plus tard", data: []);
+    }
 
     final body = json.decode(response.body);
     return ApiResponse.fromJson(body);

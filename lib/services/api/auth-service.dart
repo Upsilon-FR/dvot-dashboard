@@ -16,6 +16,9 @@ class AuthService {
       body: jsonEncode({"mail": mail, "mot_de_passe": password, "role": "ADMIN"}),
     );
     print(response.body);
+    if(response.statusCode != 200){
+      return ApiResponse(error: true, message: "Connexion Impossible, veuillez réessayer plus tard", data: []);
+    }
 
     final body = json.decode(response.body);
     final ApiResponse apiResponse = ApiResponse.fromJson(body);
@@ -39,6 +42,9 @@ class AuthService {
       body: jsonEncode({"mail": mail, "role": "ADMIN"}),
     );
     print(response.body);
+    if(response.statusCode != 200){
+      return ApiResponse(error: true, message: "Déconnexion Impossible, veuillez réessayer plus tard", data: []);
+    }
 
     final body = json.decode(response.body);
     final ApiResponse apiResponse = ApiResponse.fromJson(body);
