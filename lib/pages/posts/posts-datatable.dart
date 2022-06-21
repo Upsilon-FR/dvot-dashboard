@@ -1,5 +1,6 @@
 import 'package:dvot_dashboard_init/class/post.dart';
 import 'package:dvot_dashboard_init/pages/posts/post-datatables-actions.dart';
+import 'package:dvot_dashboard_init/widgets/datatables/data-cell.dart';
 import 'package:flutter/material.dart';
 
 class PostsDataTable extends StatefulWidget {
@@ -20,16 +21,14 @@ class _PostsDatatableState extends State<PostsDataTable> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.white
-      ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
+    return Material(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(10),
+      elevation: 15,
+      child: Container(
+        width: double.infinity,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: DataTable(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -46,10 +45,10 @@ class _PostsDatatableState extends State<PostsDataTable> {
                 .map(
                   (post) => DataRow(
                 cells: [
-                  DataCell(Text(post.title)),
-                  DataCell(Text(post.description)),
-                  DataCell(Text(post.dateCreation)),
-                  DataCell(Text(post.etat)),
+                  DataCell(CustomDataCell(post.title)),
+                  DataCell(CustomDataCell(post.description)),
+                  DataCell(CustomDataCell(post.dateCreation)),
+                  DataCell(CustomDataCell(post.etat)),
                   DataCell(PostDatatablesActions(post: post, onDeleteTap: onDeleteTap,)),
                 ],
               ),
@@ -57,9 +56,7 @@ class _PostsDatatableState extends State<PostsDataTable> {
                 .toList(),
             headingRowColor:
             MaterialStateProperty.all<Color>(Theme.of(context).primaryColor),
-            headingTextStyle: const TextStyle(
-              color: Colors.white,
-            ),
+            headingTextStyle: Theme.of(context).textTheme.bodyText2,
           ),
         ),
       ),

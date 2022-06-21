@@ -1,15 +1,11 @@
 import 'package:dvot_dashboard_init/class/api-response.dart';
 import 'package:dvot_dashboard_init/class/custom-toast.dart';
 import 'package:dvot_dashboard_init/class/post.dart';
-import 'package:dvot_dashboard_init/class/user.dart';
 import 'package:dvot_dashboard_init/pages/posts/posts.dart';
 import 'package:dvot_dashboard_init/services/api/posts-service.dart';
 import 'package:dvot_dashboard_init/widgets/add-form-date-input.dart';
 import 'package:dvot_dashboard_init/widgets/add-form-input.dart';
-import 'package:dvot_dashboard_init/pages/users/users.dart';
-import 'package:dvot_dashboard_init/services/api/user-service.dart';
 import 'package:dvot_dashboard_init/widgets/button.dart';
-import 'package:dvot_dashboard_init/widgets/dropdown/dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -63,16 +59,16 @@ class _PostAddContentState extends State<PostAddContent> {
                   onTap: () => Navigator.of(context).pop(),
                   child: Text(
                     "Gestion posts ",
-                    style: TextStyle(color: Theme.of(context).primaryColor),
+                    style: Theme.of(context).textTheme.subtitle2,
                   ),
                 ),
-                const Text(
+                Text(
                   "> ",
-                  style: TextStyle(color: Colors.black),
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
                 Text(
                   post == null ? "Création post" : "Modification post",
-                  style: const TextStyle(color: Colors.black),
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
               ],
             ),
@@ -169,7 +165,6 @@ class _PostAddContentState extends State<PostAddContent> {
                                     }else{
                                       CustomToast.showErrorToast(msg: response.message, context: context);
                                     }
-
                                   }
                                 },
                               ),
@@ -183,7 +178,7 @@ class _PostAddContentState extends State<PostAddContent> {
                 ),
               ),
             ),
-            flex: 9,
+            flex: 20,
           ),
         ],
       ),

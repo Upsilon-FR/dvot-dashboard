@@ -1,5 +1,6 @@
 import 'package:dvot_dashboard_init/pages/users/user-datatables-actions.dart';
 import 'package:dvot_dashboard_init/services/api/user-service.dart';
+import 'package:dvot_dashboard_init/widgets/datatables/data-cell.dart';
 import 'package:flutter/material.dart';
 
 import '../../class/user.dart';
@@ -23,16 +24,15 @@ class _UsersDataTableState extends State<UsersDataTable> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white
-      ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
+    return Material(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(10),
+      elevation: 15,
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: DataTable(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -51,12 +51,12 @@ class _UsersDataTableState extends State<UsersDataTable> {
                 .map(
                   (user) => DataRow(
                     cells: [
-                      DataCell(Text(user.lastName)),
-                      DataCell(Text(user.firstName)),
-                      DataCell(Text(user.birthDate)),
-                      DataCell(Text(user.birthPlace)),
-                      DataCell(Text(user.mail)),
-                      DataCell(Text(user.role),),
+                      DataCell(CustomDataCell(user.lastName)),
+                      DataCell(CustomDataCell(user.firstName)),
+                      DataCell(CustomDataCell(user.birthDate)),
+                      DataCell(CustomDataCell(user.birthPlace)),
+                      DataCell(CustomDataCell(user.mail)),
+                      DataCell(CustomDataCell(user.role),),
                       DataCell(UserDatatablesActions(user: user, onDeleteTap: onDeleteTap,)),
                     ],
                   ),
@@ -64,9 +64,7 @@ class _UsersDataTableState extends State<UsersDataTable> {
                 .toList(),
             headingRowColor:
                 MaterialStateProperty.all<Color>(Theme.of(context).primaryColor),
-            headingTextStyle: const TextStyle(
-              color: Colors.white,
-            ),
+            headingTextStyle: Theme.of(context).textTheme.bodyText2,
           ),
         ),
       ),

@@ -12,17 +12,15 @@ class Dashboard extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Row(
-        children: [
-          const Expanded(
+        children: const [
+          Expanded(
             child: SideBar(
               routeName: Dashboard.routeName,
             ),
             flex: 1,
           ),
           Expanded(
-            child: Container(
-              child: const DashboardContent(),
-            ),
+            child: DashboardContent(),
             flex: 6,
           )
         ],
