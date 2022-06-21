@@ -1,3 +1,4 @@
+import 'package:dvot_dashboard_init/class/custom-toast.dart';
 import 'package:dvot_dashboard_init/services/api-services.dart';
 import 'package:dvot_dashboard_init/services/api/auth-service.dart';
 import 'package:dvot_dashboard_init/services/api/posts-service.dart';
@@ -20,6 +21,7 @@ class SideBarElement extends StatelessWidget {
       onTap: () async => {
         if(name == "Déconnexion"){
           await AuthService.logout(ApiServices.session["mail"].toString()),
+          CustomToast.showSuccessToast(msg: "Utilisateur déconnecté", context: context),
           Navigator.of(context).pushNamed("/")
         }else {
           Navigator.of(context).pushNamed(name)

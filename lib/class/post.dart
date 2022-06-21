@@ -1,5 +1,5 @@
 class Post {
-  final String id;
+  final String? id;
   final String title;
   final String description;
   final String dateCreation;
@@ -8,8 +8,19 @@ class Post {
   final String? lienVideo;
   final String? documents;
 
-  Post({required this.id, required this.title, required this.description, required this.dateCreation,
+  Post({this.id, required this.title, required this.description, required this.dateCreation,
     required this.dateVote, required this.etat, this.lienVideo, this.documents});
+
+
+  Map<String, dynamic> toJson() {
+    return {
+      "titre": title,
+      "description": description,
+      "date_creation": dateCreation,
+      "date_vote": dateVote,
+      "etat": etat
+    };
+  }
 
 
   factory Post.fromJson(Map<String, dynamic> json) {
