@@ -14,7 +14,7 @@ class CustomToast{
   static void showErrorToast({required String msg, required BuildContext context}){
     Fluttertoast.showToast(
       backgroundColor: Colors.red,
-      webBgColor: "#4336FF",
+      webBgColor: "#F44336",
       msg: msg,
       timeInSecForIosWeb: 5,
     );

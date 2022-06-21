@@ -1,7 +1,9 @@
 import 'package:dvot_dashboard_init/class/api-response.dart';
 import 'package:dvot_dashboard_init/class/custom-toast.dart';
 import 'package:dvot_dashboard_init/class/post.dart';
+import 'package:dvot_dashboard_init/pages/posts/add/post-add.dart';
 import 'package:dvot_dashboard_init/pages/posts/posts-datatable.dart';
+import 'package:dvot_dashboard_init/pages/posts/posts.dart';
 import 'package:dvot_dashboard_init/services/api/posts-service.dart';
 import 'package:dvot_dashboard_init/widgets/button.dart';
 import 'package:dvot_dashboard_init/widgets/total/total-posts.dart';
@@ -61,9 +63,9 @@ class PostsContent extends StatelessWidget {
                 Expanded(
                   child: Button(
                     "Ajouter un post",
-                    height: 100,
+                    height: 50,
                     onTap: () => {
-                      print("Ajout d'utilisateurs")
+                      Navigator.of(context).pushNamed(PostAdd.routeName)
                     },
                   ),
                   flex: 5,

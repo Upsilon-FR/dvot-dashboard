@@ -1,3 +1,5 @@
+import 'package:dvot_dashboard_init/utils/random-string.dart';
+
 class User {
   final String lastName;
   final String firstName;
@@ -21,4 +23,31 @@ class User {
       role: json["role"] as String
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "nom": lastName,
+      "prenom": firstName,
+      "mail": mail,
+      "date_naissance": birthDate,
+      "lieu_naissance": birthPlace,
+      "genre": gender,
+      "role": role,
+      "mot_de_passe": /*RandomString.getRandomString(10)*/ "@zerty1234",
+    };
+  }
+
+  Map<String, dynamic> toJsonWhithtouPassword() {
+    return {
+      "nom": lastName,
+      "prenom": firstName,
+      "mail": mail,
+      "date_naissance": birthDate,
+      "lieu_naissance": birthPlace,
+      "genre": gender,
+      "role": role,
+    };
+  }
+
+
 }

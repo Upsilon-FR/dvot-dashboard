@@ -31,39 +31,42 @@ class _UsersDataTableState extends State<UsersDataTable> {
       ),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: DataTable(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          horizontalMargin: 15,
-          columns: const [
-            DataColumn(label: Text("Nom(s)")),
-            DataColumn(label: Text("Prénom(s)")),
-            DataColumn(label: Text("Date de Naissance")),
-            DataColumn(label: Text("Lieu de Naissance")),
-            DataColumn(label: Text("Adresse Mail")),
-            DataColumn(label: Text("Rôle")),
-            DataColumn(label: Text("Actions")),
-          ],
-          rows: widget.users
-              .map(
-                (user) => DataRow(
-                  cells: [
-                    DataCell(Text(user.lastName)),
-                    DataCell(Text(user.firstName)),
-                    DataCell(Text(user.birthDate)),
-                    DataCell(Text(user.birthPlace)),
-                    DataCell(Text(user.mail)),
-                    DataCell(Text(user.role),),
-                    DataCell(UserDatatablesActions(user: user, onDeleteTap: onDeleteTap,)),
-                  ],
-                ),
-              )
-              .toList(),
-          headingRowColor:
-              MaterialStateProperty.all<Color>(Theme.of(context).primaryColor),
-          headingTextStyle: const TextStyle(
-            color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: DataTable(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            horizontalMargin: 15,
+            columns: const [
+              DataColumn(label: Text("Nom(s)")),
+              DataColumn(label: Text("Prénom(s)")),
+              DataColumn(label: Text("Date de Naissance")),
+              DataColumn(label: Text("Lieu de Naissance")),
+              DataColumn(label: Text("Adresse Mail")),
+              DataColumn(label: Text("Rôle")),
+              DataColumn(label: Text("Actions")),
+            ],
+            rows: widget.users
+                .map(
+                  (user) => DataRow(
+                    cells: [
+                      DataCell(Text(user.lastName)),
+                      DataCell(Text(user.firstName)),
+                      DataCell(Text(user.birthDate)),
+                      DataCell(Text(user.birthPlace)),
+                      DataCell(Text(user.mail)),
+                      DataCell(Text(user.role),),
+                      DataCell(UserDatatablesActions(user: user, onDeleteTap: onDeleteTap,)),
+                    ],
+                  ),
+                )
+                .toList(),
+            headingRowColor:
+                MaterialStateProperty.all<Color>(Theme.of(context).primaryColor),
+            headingTextStyle: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
       ),

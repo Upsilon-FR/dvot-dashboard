@@ -1,3 +1,4 @@
+import 'package:dvot_dashboard_init/pages/posts/add/post-add.dart';
 import 'package:dvot_dashboard_init/pages/posts/posts.dart';
 import 'package:flutter/material.dart';
 
@@ -42,7 +43,7 @@ class LatestPostsItem extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () => {
-                  print("tap tap")
+                  Navigator.of(context).pushNamed(PostAdd.routeName, arguments: post),
                 },
                 child: const Icon(
                   Icons.keyboard_arrow_right_rounded,

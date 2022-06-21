@@ -1,4 +1,5 @@
 import 'package:dvot_dashboard_init/class/post.dart';
+import 'package:dvot_dashboard_init/pages/posts/add/post-add.dart';
 import 'package:dvot_dashboard_init/services/api-services.dart';
 import 'package:dvot_dashboard_init/services/api/posts-service.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class PostDatatablesActions extends StatelessWidget {
       children: [
         GestureDetector(
           child: const Icon(Icons.edit),
-          onTap: () => Navigator.of(context).pushNamed("/"),
+          onTap: () => Navigator.of(context).pushNamed(PostAdd.routeName, arguments: post),
         ),
         GestureDetector(
           child: const Icon(Icons.delete),

@@ -8,6 +8,8 @@ import 'package:dvot_dashboard_init/widgets/total/total-users-active.dart';
 import 'package:dvot_dashboard_init/widgets/total/total-users.dart';
 import 'package:flutter/material.dart';
 
+import 'add/user-add.dart';
+
 class UsersContent extends StatelessWidget {
   const UsersContent({Key? key}) : super(key: key);
 
@@ -61,9 +63,9 @@ class UsersContent extends StatelessWidget {
                 Expanded(
                   child: Button(
                     "Ajouter un utilisateur",
-                    height: 100,
+                    height: 50,
                     onTap: () => {
-                      print("Ajout d'utilisateurs")
+                      Navigator.of(context).pushNamed(AddUser.routeName),
                     },
                   ),
                   flex: 5,
