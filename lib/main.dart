@@ -2,10 +2,12 @@
 
 import 'dart:html';
 
+import 'package:dvot_dashboard_init/class/direct.dart';
 import 'package:dvot_dashboard_init/class/post.dart';
 import 'package:dvot_dashboard_init/class/user.dart';
 import 'package:dvot_dashboard_init/pages/dashboard/dashboard.dart';
 import 'package:dvot_dashboard_init/pages/directs/directs.dart';
+import 'package:dvot_dashboard_init/pages/directs/settings/direct-settings.dart';
 import 'package:dvot_dashboard_init/pages/login/login.dart';
 import 'package:dvot_dashboard_init/pages/page404.dart';
 import 'package:dvot_dashboard_init/pages/posts/add/post-add.dart';
@@ -35,8 +37,38 @@ class MyApp extends StatelessWidget {
             color: Color(0xFF2B3548),
             fontSize: 28,
             fontWeight: FontWeight.bold
-          )
-        )
+          ),
+          headline2: TextStyle(
+            color: Colors.white,
+            fontSize: 28,
+            fontWeight: FontWeight.bold
+          ),
+          bodyText1: TextStyle(
+            fontSize: 15,
+            color: Colors.black,
+            fontWeight: FontWeight.normal
+          ),
+          bodyText2: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          subtitle1: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.normal,
+            color: Color(0xFF2B3548),
+          ),
+          subtitle2: TextStyle(
+              fontSize: 15,
+              color: Color(0xff0762C8),
+              fontWeight: FontWeight.normal
+          ),
+          button: TextStyle(
+              fontSize: 15,
+              color: Colors.white,
+              fontWeight: FontWeight.bold
+          ),
+        ),
       ),
       onGenerateRoute: (RouteSettings settings) {
         final dynamic arguments = settings.arguments;
@@ -69,6 +101,13 @@ class MyApp extends StatelessWidget {
               post = arguments;
             }
             return PageTransition(child: PostAdd(post: post,), type: PageTransitionType.fade);
+            break;
+          case DirectSettings.routeName:
+            Direct? direct;
+            if(arguments is Direct){
+              direct = arguments;
+            }
+            return PageTransition(child: DirectSettings(direct: direct,), type: PageTransitionType.fade);
             break;
           case "Disconnect":
             return PageTransition(child: const Directs(), type: PageTransitionType.fade);

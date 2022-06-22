@@ -93,16 +93,16 @@ class _AddUserContentState extends State<AddUserContent> {
                   onTap: () => Navigator.of(context).pop(),
                   child: Text(
                     "Gestion utilisateurs ",
-                    style: TextStyle(color: Theme.of(context).primaryColor),
+                    style: Theme.of(context).textTheme.subtitle2,
                   ),
                 ),
-                const Text(
+                Text(
                   "> ",
-                  style: TextStyle(color: Colors.black),
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
                 Text(
                   user == null ? "Création utilisateur" : "Modification utilisateur",
-                  style: const TextStyle(color: Colors.black),
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
               ],
             ),
@@ -278,7 +278,7 @@ class _AddUserContentState extends State<AddUserContent> {
                 ),
               ),
             ),
-            flex: 9,
+            flex: 20,
           ),
         ],
       ),

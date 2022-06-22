@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dvot_dashboard_init/services/api/user-service.dart';
 import 'package:flutter/material.dart';
 
@@ -8,18 +10,22 @@ class TotalUsers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
+    return Material(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(10),
+      elevation: 15,
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Center(child: Text("Total Utilisateurs")),
+            Center(
+              child: Text(
+                "Total Utilisateurs",
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
+            ),
             FutureBuilder(
               future: UserService.countAllUsers(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {

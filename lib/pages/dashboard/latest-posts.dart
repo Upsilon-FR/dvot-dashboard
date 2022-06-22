@@ -11,11 +11,10 @@ class LatestPosts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
-      ),
+    return Material(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(10),
+      elevation: 15,
       child: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
