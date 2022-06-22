@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
       title: "DVOT - Dashboard",
       theme: ThemeData(
         backgroundColor: const Color(0xffe5e5e5),
+        canvasColor: const Color(0xffdddfE3),
         primaryColor: const Color(0xff0762C8),
         cardColor: const Color(0xfff1f7ff),
         textTheme: const TextTheme(
