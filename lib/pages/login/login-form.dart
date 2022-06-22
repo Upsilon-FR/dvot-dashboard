@@ -65,6 +65,7 @@ class _LoginFormState extends State<LoginForm> {
                           label: "Adresse mail",
                           controller: emailController,
                           required: true,
+                          
                         ),
                       ),
                       const SizedBox(
