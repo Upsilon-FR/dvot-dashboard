@@ -16,14 +16,13 @@ class DashboardLiveContent extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 5),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            child: Center(
-              child: Text(
-                "Direct : ${direct.title}",
-              ),
+            child: Text(
+              "Direct : ${direct.title}",
+              style: Theme.of(context).textTheme.subtitle1,
             ),
             flex: 3,
           ),

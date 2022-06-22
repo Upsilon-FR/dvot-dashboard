@@ -71,7 +71,7 @@ class DirectsContent extends StatelessWidget {
             flex: 3,
           ),
           const SizedBox(
-            height: 50,
+            height: 20,
           ),
           Expanded(
             child: Row(
@@ -128,7 +128,7 @@ class DirectsContent extends StatelessWidget {
                 ),
               ],
             ),
-            flex: 11,
+            flex: 20,
           ),
         ],
       ),

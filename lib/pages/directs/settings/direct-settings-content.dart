@@ -1,6 +1,7 @@
 import 'package:dvot_dashboard_init/class/direct.dart';
 import 'package:dvot_dashboard_init/pages/directs/DirectPlayer.dart';
 import 'package:dvot_dashboard_init/pages/directs/directs.dart';
+import 'package:dvot_dashboard_init/pages/directs/settings/direct-detail-container.dart';
 import 'package:dvot_dashboard_init/pages/directs/settings/direct-settings.dart';
 import 'package:flutter/material.dart';
 
@@ -71,9 +72,7 @@ class DirectSettingsContent extends StatelessWidget {
                               width: 20,
                             ),
                             Expanded(
-                              child: Container(
-                                color: Colors.red,
-                              ),
+                              child: DirectDetailContainer(direct: direct,),
                               flex: 1,
                             )
                           ],

@@ -1,0 +1,27 @@
+ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Theme.of(context).primaryColor)),
+                          onPressed: () async {
+                            ApiResponse success;
+                            if (emailController.text == "" ||
+                                passwordController.text == "") {
+                              CustomToast.showSuccessToast(
+                                  msg: "Veuillez renseigner tous les champs",
+                                  context: context);
+                            } else {
+                              success = await AuthService.login(
+                                  emailController.text,
+                                  passwordController.text);
+                              if (!success.error) {
+                                Navigator.of(context).pushNamed(Dashboard.routeName);
+                                CustomToast.showSuccessToast(
+                                    msg: success.message, context: context);
+                              } else {
+                                CustomToast.showErrorToast(
+                                    msg: success.message, context: context);
+                              }
+                            }
+                          },
+                          child: const Text("Se connecter"),
+                        ),

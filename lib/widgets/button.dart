@@ -23,7 +23,7 @@ class Button extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         elevation: 15,
         color: Theme.of(context).primaryColor,
-        child: Container(
+        child: SizedBox(
           width: width,
           height: height,
           child: Center(
