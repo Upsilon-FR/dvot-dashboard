@@ -36,7 +36,7 @@ class _DirectAddContentState extends State<DirectAddContent> {
 
   @override
   Widget build(BuildContext context) {
-    linkController.text = "https://";
+    linkController.text = "https://youtu.be/";
     if (direct != null) {
       titleController.text = direct!.title;
       descirptionController.text = direct!.description;
