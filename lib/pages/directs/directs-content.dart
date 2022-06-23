@@ -7,6 +7,7 @@ import 'package:dvot_dashboard_init/pages/directs/directs.dart';
 import 'package:dvot_dashboard_init/pages/directs/last-direct.dart';
 import 'package:dvot_dashboard_init/services/api/directs-service.dart';
 import 'package:dvot_dashboard_init/widgets/buttons/button.dart';
+import 'package:dvot_dashboard_init/widgets/total/average-spectators.dart';
 import 'package:dvot_dashboard_init/widgets/total/total-directs.dart';
 import 'package:flutter/material.dart';
 
@@ -54,7 +55,7 @@ class DirectsContent extends StatelessWidget {
                   width: 20,
                 ),
                 const Expanded(
-                  child: TotalDirects(),
+                  child: AverageSpectators(),
                   flex: 2,
                 ),
                 const SizedBox(

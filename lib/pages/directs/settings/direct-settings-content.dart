@@ -1,5 +1,5 @@
 import 'package:dvot_dashboard_init/class/direct.dart';
-import 'package:dvot_dashboard_init/pages/directs/DirectPlayer.dart';
+import 'package:dvot_dashboard_init/pages/directs/directs-player.dart';
 import 'package:dvot_dashboard_init/pages/directs/directs.dart';
 import 'package:dvot_dashboard_init/pages/directs/settings/direct-detail-container.dart';
 import 'package:dvot_dashboard_init/pages/directs/settings/direct-settings-actions.dart';

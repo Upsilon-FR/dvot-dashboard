@@ -1,6 +1,6 @@
 import 'package:dvot_dashboard_init/class/direct.dart';
 import 'package:dvot_dashboard_init/pages/dashboard/dashboard-live-content.dart';
-import 'package:dvot_dashboard_init/pages/directs/DirectPlayer.dart';
+import 'package:dvot_dashboard_init/pages/directs/directs-player.dart';
 import 'package:dvot_dashboard_init/services/api/directs-service.dart';
 import 'package:dvot_dashboard_init/widgets/buttons/button.dart';
 import 'package:flutter/material.dart';

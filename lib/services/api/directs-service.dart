@@ -179,4 +179,27 @@ class DirectsService {
     final body = json.decode(response.body);
     return ApiResponse.fromJson(body);
   }
+
+  static Future<ApiResponse> delete(String id) async {
+    if (ApiServices.session["token"] == null) {
+      throw Error();
+    }
+    String? token = ApiServices.session["token"];
+    final response = await http.delete(
+      Uri.parse(ApiServices.API_URL + BASE + "/suppression/$id"),
+      headers: <String, String>{
+        'authorization': "Bearer $token",
+      },
+    );
+    print(response.body);
+    if (response.statusCode != 200) {
+      return ApiResponse(
+          error: true,
+          message: "Opération Impossible, veuillez réessayer plus tard",
+          data: []);
+    }
+
+    final body = json.decode(response.body);
+    return ApiResponse.fromJson(body);
+  }
 }

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:dvot_dashboard_init/class/api-response.dart';
 import 'package:dvot_dashboard_init/class/direct.dart';
-import 'package:dvot_dashboard_init/pages/directs/DirectPlayer.dart';
+import 'package:dvot_dashboard_init/pages/directs/directs-player.dart';
 import 'package:dvot_dashboard_init/pages/directs/settings/direct-settings.dart';
 import 'package:dvot_dashboard_init/services/api/directs-service.dart';
 import 'package:dvot_dashboard_init/widgets/buttons/button.dart';
@@ -110,7 +110,9 @@ class LatestDirect extends StatelessWidget {
                             Expanded(
                               child: Button(
                                 "Gérer",
-                                onTap: () => Navigator.of(context).pushNamed(DirectSettings.routeName, arguments: direct),
+                                onTap: () => Navigator.of(context).pushNamed(
+                                    DirectSettings.routeName,
+                                    arguments: direct),
                                 color: Theme.of(context).primaryColor,
                               ),
                             ),
@@ -126,8 +128,11 @@ class LatestDirect extends StatelessWidget {
             default:
               return Container();
           }
-          return const Center(
-            child: Text("Aucun Direct en Live"),
+          return Center(
+            child: Text(
+              "Aucun Direct en Live",
+              style: Theme.of(context).textTheme.subtitle1,
+            ),
           );
         },
       ),

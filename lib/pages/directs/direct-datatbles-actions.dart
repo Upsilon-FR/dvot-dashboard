@@ -28,7 +28,7 @@ class DirectDatatablesActions extends StatelessWidget {
         GestureDetector(
           child: const Icon(Icons.delete),
           onTap: () async => {
-            // await DirectsService.deletePost(direct),
+            await DirectsService.delete(direct.id ?? ""),
             onDeleteTap(direct),
           },
         ),
