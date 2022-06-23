@@ -6,6 +6,7 @@ import 'package:dvot_dashboard_init/class/direct.dart';
 import 'package:dvot_dashboard_init/class/post.dart';
 import 'package:dvot_dashboard_init/class/user.dart';
 import 'package:dvot_dashboard_init/pages/dashboard/dashboard.dart';
+import 'package:dvot_dashboard_init/pages/directs/add/direct-add.dart';
 import 'package:dvot_dashboard_init/pages/directs/directs.dart';
 import 'package:dvot_dashboard_init/pages/directs/settings/direct-settings.dart';
 import 'package:dvot_dashboard_init/pages/login/login.dart';
@@ -109,6 +110,13 @@ class MyApp extends StatelessWidget {
               direct = arguments;
             }
             return PageTransition(child: DirectSettings(direct: direct,), type: PageTransitionType.fade);
+            break;
+          case DirectAdd.routeName:
+            Direct? direct;
+            if(arguments is Direct){
+              direct = arguments;
+            }
+            return PageTransition(child: DirectAdd(direct: direct,), type: PageTransitionType.fade);
             break;
           case "Disconnect":
             return PageTransition(child: const Directs(), type: PageTransitionType.fade);

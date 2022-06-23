@@ -1,5 +1,6 @@
 import 'package:dvot_dashboard_init/class/api-response.dart';
 import 'package:dvot_dashboard_init/services/api/directs-service.dart';
+import 'package:dvot_dashboard_init/widgets/custom-linear-progress-indicator.dart';
 import 'package:flutter/material.dart';
 
 class TotalDirects extends StatelessWidget {
@@ -29,7 +30,7 @@ class TotalDirects extends StatelessWidget {
                 switch (snapshot.connectionState) {
                   case ConnectionState.waiting:
                     return const Center(
-                      child: CircularProgressIndicator(),
+                      child: CustomLinearProgressIndicator(),
                     );
                     break;
                   case ConnectionState.done:

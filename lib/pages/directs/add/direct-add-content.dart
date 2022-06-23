@@ -1,42 +1,48 @@
 import 'package:dvot_dashboard_init/class/api-response.dart';
 import 'package:dvot_dashboard_init/class/custom-toast.dart';
-import 'package:dvot_dashboard_init/class/post.dart';
-import 'package:dvot_dashboard_init/pages/posts/posts.dart';
-import 'package:dvot_dashboard_init/services/api/posts-service.dart';
+import 'package:dvot_dashboard_init/class/direct.dart';
+import 'package:dvot_dashboard_init/pages/directs/directs.dart';
+import 'package:dvot_dashboard_init/services/api/directs-service.dart';
 import 'package:dvot_dashboard_init/widgets/add-form-date-input.dart';
 import 'package:dvot_dashboard_init/widgets/add-form-input.dart';
 import 'package:dvot_dashboard_init/widgets/buttons/button.dart';
 import 'package:dvot_dashboard_init/widgets/navigation-history.dart';
+import 'package:dvot_dashboard_init/widgets/page-title.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-class PostAddContent extends StatefulWidget {
-  final Post? post;
+class DirectAddContent extends StatefulWidget {
+  final Direct? direct;
 
-  const PostAddContent({Key? key, this.post}) : super(key: key);
+  const DirectAddContent({Key? key, required this.direct}) : super(key: key);
 
   @override
-  State<PostAddContent> createState() => _PostAddContentState();
+  State<DirectAddContent> createState() => _DirectAddContentState();
 }
 
-class _PostAddContentState extends State<PostAddContent> {
-  Post? get post => widget.post;
+class _DirectAddContentState extends State<DirectAddContent> {
+  Direct? get direct => widget.direct;
+
   TextEditingController titleController = TextEditingController();
 
-  TextEditingController dateVoteController = TextEditingController();
+  TextEditingController descirptionController = TextEditingController();
 
-  TextEditingController descriptionController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
 
-  DateTime selectedDateTime = DateTime.now();
+  TextEditingController linkController = TextEditingController();
+
+  TextEditingController authorController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    if (post != null) {
-      titleController.text = post!.title;
-      dateVoteController.text = post!.dateVote;
-      descriptionController.text = post!.description;
+    linkController.text = "https://";
+    if (direct != null) {
+      titleController.text = direct!.title;
+      descirptionController.text = direct!.description;
+      dateController.text = direct!.date;
+      linkController.text = direct!.link;
+      authorController.text = direct!.author;
     }
 
     return Padding(
@@ -46,16 +52,16 @@ class _PostAddContentState extends State<PostAddContent> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Text(
-              post == null ? "Création post" : "Modification post",
-              style: Theme.of(context).textTheme.headline1,
+            child: PageTitle(
+              direct == null ? "Création Direct" : "Modification Direct",
             ),
             flex: 1,
           ),
           Expanded(
             child: PageNavigationHistory(
-              first: Posts.routeName,
-              second: post == null ? "Création post" : "Modification post",
+              first: Directs.routeName,
+              second:
+                  direct == null ? "Création Direct" : "Modification Direct",
             ),
             flex: 1,
           ),
@@ -73,16 +79,7 @@ class _PostAddContentState extends State<PostAddContent> {
                       Expanded(
                         child: AddFormInput(
                           controller: titleController,
-                          label: "Titre de loi",
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Expanded(
-                        child: AddFormDateInput(
-                          controller: dateVoteController,
-                          label: "Date prévue de vote",
+                          label: 'Titre du Direct',
                         ),
                       ),
                       const SizedBox(
@@ -90,7 +87,7 @@ class _PostAddContentState extends State<PostAddContent> {
                       ),
                       Expanded(
                         child: AddFormInput(
-                          controller: descriptionController,
+                          controller: descirptionController,
                           label: "Description",
                         ),
                         flex: 9,
@@ -98,8 +95,33 @@ class _PostAddContentState extends State<PostAddContent> {
                       const SizedBox(
                         height: 20,
                       ),
+                      Expanded(
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: AddFormDateInput(
+                                controller: dateController,
+                                label: 'Date du Direct',
+                              ),
+                            ),
+                            const SizedBox(width: 20,),
+                            Expanded(
+                              child: AddFormInput(
+                                controller: authorController,
+                                label: "Demandeur du Direct",
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                       const SizedBox(
                         height: 20,
+                      ),
+                      Expanded(
+                        child: AddFormInput(
+                          controller: linkController,
+                          label: "Lien du Direct",
+                        ),
                       ),
                       Expanded(
                         child: Row(
@@ -113,36 +135,38 @@ class _PostAddContentState extends State<PostAddContent> {
                             ),
                             Expanded(
                               child: Button(
-                                widget.post == null ? "Créer" : "Modifier",
+                                widget.direct == null ? "Créer" : "Modifier",
                                 onTap: () async {
                                   if (_formKey.currentState!.validate()) {
                                     // If the form is valid, display a snackbar. In the real world,
                                     // you'd often call a server or save the information in a database.
                                     ApiResponse response;
-                                    if (post == null) {
-                                      Post post = Post(
+                                    if (direct == null) {
+                                      Direct newDirect = Direct(
                                         title: titleController.text,
-                                        dateVote: dateVoteController.text,
-                                        dateCreation: DateFormat("dd/MM/yyy")
-                                            .format(DateTime.now()),
-                                        etat: "PENDING",
-                                        description: descriptionController.text,
+                                        description: descirptionController.text,
+                                        link: linkController.text,
+                                        date: dateController.text,
+                                        author: authorController.text,
+                                        live: false,
+                                        spectators: 0,
                                       );
-                                      response = await PostsService.add(post);
+                                      response = await DirectsService.add(newDirect);
                                     } else {
                                       Map<String, dynamic> json = {
                                         "titre": titleController.text,
-                                        "date_vote": dateVoteController.text,
-                                        "description":
-                                            descriptionController.text
+                                        "description": descirptionController.text,
+                                        "lien": linkController.text,
+                                        "date": dateController.text,
+                                        "auteur": authorController.text,
                                       };
-                                      String id = post!.id ?? "";
+                                      String id = direct?.id ?? "";
                                       response =
-                                          await PostsService.update(json, id);
+                                          await DirectsService.update(json, id);
                                     }
                                     if (!response.error) {
                                       Navigator.of(context)
-                                          .pushNamed(Posts.routeName);
+                                          .pushNamed(Directs.routeName);
                                       CustomToast.showSuccessToast(
                                           msg: response.message,
                                           context: context);
@@ -166,7 +190,7 @@ class _PostAddContentState extends State<PostAddContent> {
               ),
             ),
             flex: 20,
-          ),
+          )
         ],
       ),
     );

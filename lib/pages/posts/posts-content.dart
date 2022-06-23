@@ -5,7 +5,7 @@ import 'package:dvot_dashboard_init/pages/posts/add/post-add.dart';
 import 'package:dvot_dashboard_init/pages/posts/posts-datatable.dart';
 import 'package:dvot_dashboard_init/pages/posts/posts.dart';
 import 'package:dvot_dashboard_init/services/api/posts-service.dart';
-import 'package:dvot_dashboard_init/widgets/button.dart';
+import 'package:dvot_dashboard_init/widgets/buttons/button.dart';
 import 'package:dvot_dashboard_init/widgets/total/total-posts.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +40,9 @@ class PostsContent extends StatelessWidget {
             ),
             flex: 1,
           ),
-          const SizedBox(height: 50,),
+          const SizedBox(
+            height: 50,
+          ),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -64,9 +66,9 @@ class PostsContent extends StatelessWidget {
                   child: Button(
                     "Ajouter un post",
                     height: 50,
-                    onTap: () => {
-                      Navigator.of(context).pushNamed(PostAdd.routeName)
-                    },
+                    onTap: () =>
+                        {Navigator.of(context).pushNamed(PostAdd.routeName)},
+                    color: Theme.of(context).primaryColor,
                   ),
                   flex: 5,
                 ),
@@ -74,7 +76,9 @@ class PostsContent extends StatelessWidget {
             ),
             flex: 2,
           ),
-          const SizedBox(height: 50,),
+          const SizedBox(
+            height: 50,
+          ),
           Expanded(
             child: FutureBuilder(
               future: PostsService.getAllPosts(0),
@@ -102,8 +106,11 @@ class PostsContent extends StatelessWidget {
                           .map((post) => Post.fromJson(post))
                           .toList();
                       if (posts.isEmpty) {
-                        return const Center(
-                          child: Text("Aucun Post"),
+                        return Center(
+                          child: Text(
+                            "Aucun Post",
+                            style: Theme.of(context).textTheme.subtitle1,
+                          ),
                         );
                       }
                       return PostsDataTable(posts: posts);

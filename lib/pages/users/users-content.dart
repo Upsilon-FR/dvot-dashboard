@@ -3,7 +3,7 @@ import 'package:dvot_dashboard_init/class/custom-toast.dart';
 import 'package:dvot_dashboard_init/class/user.dart';
 import 'package:dvot_dashboard_init/pages/users/users-datatable.dart';
 import 'package:dvot_dashboard_init/services/api/user-service.dart';
-import 'package:dvot_dashboard_init/widgets/button.dart';
+import 'package:dvot_dashboard_init/widgets/buttons/button.dart';
 import 'package:dvot_dashboard_init/widgets/total/total-users-active.dart';
 import 'package:dvot_dashboard_init/widgets/total/total-users.dart';
 import 'package:flutter/material.dart';
@@ -67,6 +67,7 @@ class UsersContent extends StatelessWidget {
                     onTap: () => {
                       Navigator.of(context).pushNamed(AddUser.routeName),
                     },
+                    color: Theme.of(context).primaryColor,
                   ),
                   flex: 5,
                 ),

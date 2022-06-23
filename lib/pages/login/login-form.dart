@@ -5,7 +5,7 @@ import 'package:dvot_dashboard_init/class/custom-toast.dart';
 import 'package:dvot_dashboard_init/pages/dashboard/dashboard.dart';
 import 'package:dvot_dashboard_init/pages/login/login-form-input.dart';
 import 'package:dvot_dashboard_init/services/api/auth-service.dart';
-import 'package:dvot_dashboard_init/widgets/button.dart';
+import 'package:dvot_dashboard_init/widgets/buttons/button.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
@@ -83,6 +83,7 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                       Expanded(
                         child: Button(
+                          color: Theme.of(context).primaryColor,
                           "Se connecter",
                           onTap: () async {
                             if (_formKey.currentState!.validate()) {

@@ -53,8 +53,11 @@ class LatestPosts extends StatelessWidget {
                           .map((post) => Post.fromJson(post))
                           .toList();
                       if (latestPosts.isEmpty) {
-                        return const Center(
-                          child: Text("Aucun post récent"),
+                        return Center(
+                          child: Text(
+                            "Aucun post récent",
+                            style: Theme.of(context).textTheme.subtitle1,
+                          ),
                         );
                       }
                       return ListView.builder(

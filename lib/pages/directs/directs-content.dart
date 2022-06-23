@@ -1,11 +1,12 @@
 import 'package:dvot_dashboard_init/class/api-response.dart';
 import 'package:dvot_dashboard_init/class/custom-toast.dart';
 import 'package:dvot_dashboard_init/class/direct.dart';
+import 'package:dvot_dashboard_init/pages/directs/add/direct-add.dart';
 import 'package:dvot_dashboard_init/pages/directs/direct-datatable.dart';
 import 'package:dvot_dashboard_init/pages/directs/directs.dart';
 import 'package:dvot_dashboard_init/pages/directs/last-direct.dart';
 import 'package:dvot_dashboard_init/services/api/directs-service.dart';
-import 'package:dvot_dashboard_init/widgets/button.dart';
+import 'package:dvot_dashboard_init/widgets/buttons/button.dart';
 import 'package:dvot_dashboard_init/widgets/total/total-directs.dart';
 import 'package:flutter/material.dart';
 
@@ -62,7 +63,8 @@ class DirectsContent extends StatelessWidget {
                 Expanded(
                   child: Button(
                     "Nouveau Direct",
-                    onTap: () => {Navigator.of(context).pushNamed("/")},
+                    onTap: () => {Navigator.of(context).pushNamed(DirectAdd.routeName),},
+                    color: Theme.of(context).primaryColor,
                   ),
                   flex: 5,
                 ),
@@ -110,8 +112,9 @@ class DirectsContent extends StatelessWidget {
                                 .map((json) => Direct.fromJson(json))
                                 .toList();
                             if (directs.isEmpty) {
-                              return const Center(
-                                child: Text("Aucun Post"),
+                              return Center(
+                                child: Text("Aucun Direct",
+                                  style: Theme.of(context).textTheme.subtitle1,),
                               );
                             }
                             return DirectsDatatable(directs: directs);

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:dvot_dashboard_init/services/api/user-service.dart';
+import 'package:dvot_dashboard_init/widgets/custom-linear-progress-indicator.dart';
 import 'package:flutter/material.dart';
 
 import '../../class/api-response.dart';
@@ -32,7 +33,7 @@ class TotalUsers extends StatelessWidget {
                 switch (snapshot.connectionState) {
                   case ConnectionState.waiting:
                     return const Center(
-                      child: CircularProgressIndicator(),
+                      child: CustomLinearProgressIndicator(),
                     );
                     break;
                   case ConnectionState.done:
