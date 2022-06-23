@@ -12,31 +12,41 @@ class SideBar extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: [
-          const Image(image: AssetImage("sidebar-header.png"), height: 100,),
-          SideBarElement(
-            icon: Icons.dashboard,
-            name: "Dashboard",
-            route: routeName,
+          const Expanded(child: Image(image: AssetImage("sidebar-header.png"), height: 100,), flex: 1,),
+          Expanded(
+            child: Column(
+              children: [
+                SideBarElement(
+                  icon: Icons.dashboard,
+                  name: "Dashboard",
+                  route: routeName,
+                ),
+                SideBarElement(
+                  icon: Icons.person,
+                  name: "Utilisateurs",
+                  route: routeName,
+                ),
+                SideBarElement(
+                  icon: Icons.class_outlined,
+                  name: "Posts",
+                  route: routeName,
+                ),
+                SideBarElement(
+                  icon: Icons.adjust,
+                  name: "Directs",
+                  route: routeName,
+                ),
+              ],
+            ),
+            flex: 9,
           ),
-          SideBarElement(
-            icon: Icons.person,
-            name: "Utilisateurs",
-            route: routeName,
-          ),
-          SideBarElement(
-            icon: Icons.turned_in_not,
-            name: "Posts",
-            route: routeName,
-          ),
-          SideBarElement(
-            icon: Icons.adjust,
-            name: "Directs",
-            route: routeName,
-          ),
-          SideBarElement(
-            icon: Icons.exit_to_app,
-            name: "Déconnexion",
-            route: routeName,
+          Expanded(
+            child: SideBarElement(
+              icon: Icons.exit_to_app,
+              name: "Déconnexion",
+              route: routeName,
+            ),
+            flex: 1,
           ),
         ],
       ),

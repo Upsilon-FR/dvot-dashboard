@@ -1,4 +1,5 @@
 import 'package:dvot_dashboard_init/class/direct.dart';
+import 'package:dvot_dashboard_init/pages/directs/add/direct-add.dart';
 import 'package:dvot_dashboard_init/pages/directs/settings/direct-settings.dart';
 import 'package:dvot_dashboard_init/services/api/directs-service.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class DirectDatatablesActions extends StatelessWidget {
         ),
         GestureDetector(
           child: const Icon(Icons.edit),
-          onTap: () => Navigator.of(context).pushNamed("/"),
+          onTap: () => Navigator.of(context).pushNamed(DirectAdd.routeName, arguments: direct),
         ),
         GestureDetector(
           child: const Icon(Icons.delete),

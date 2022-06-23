@@ -8,7 +8,7 @@ class PostAdd extends StatelessWidget {
   static const routeName = "Ajout Post";
   final Post? post;
 
-  const PostAdd({Key? key, this.post}) : super(key: key);
+  const PostAdd({Key? key, required this.post}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

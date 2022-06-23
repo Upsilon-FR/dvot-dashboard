@@ -2,7 +2,7 @@ import 'dart:html';
 
 import 'package:dvot_dashboard_init/class/direct.dart';
 import 'package:dvot_dashboard_init/pages/directs/settings/direct-settings.dart';
-import 'package:dvot_dashboard_init/widgets/button.dart';
+import 'package:dvot_dashboard_init/widgets/buttons/button.dart';
 import 'package:flutter/material.dart';
 
 class DashboardLiveContent extends StatelessWidget {
@@ -36,6 +36,7 @@ class DashboardLiveContent extends StatelessWidget {
                 "Gérer",
                 onTap: () => Navigator.of(context)
                     .pushNamed(DirectSettings.routeName, arguments: direct),
+                color: Theme.of(context).primaryColor,
               ),
             ),
             flex: 1,

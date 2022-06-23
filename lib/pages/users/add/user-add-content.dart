@@ -1,9 +1,10 @@
 import 'package:dvot_dashboard_init/class/api-response.dart';
 import 'package:dvot_dashboard_init/class/custom-toast.dart';
+import 'package:dvot_dashboard_init/widgets/add-form-date-input.dart';
 import 'package:dvot_dashboard_init/widgets/add-form-input.dart';
 import 'package:dvot_dashboard_init/pages/users/users.dart';
 import 'package:dvot_dashboard_init/services/api/user-service.dart';
-import 'package:dvot_dashboard_init/widgets/button.dart';
+import 'package:dvot_dashboard_init/widgets/buttons/button.dart';
 import 'package:dvot_dashboard_init/widgets/dropdown/dropdown.dart';
 import 'package:flutter/material.dart';
 
@@ -160,7 +161,7 @@ class _AddUserContentState extends State<AddUserContent> {
                               width: 50,
                             ),
                             Expanded(
-                              child: AddFormInput(
+                              child: AddFormDateInput(
                                 controller: birthDateController,
                                 label: "Date De Naissace",
                               ),
@@ -267,6 +268,7 @@ class _AddUserContentState extends State<AddUserContent> {
                                         context: context);
                                   }
                                 },
+                                color: Theme.of(context).primaryColor,
                               ),
                               flex: 1,
                             ),

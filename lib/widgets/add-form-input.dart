@@ -13,6 +13,9 @@ class AddFormInput extends StatelessWidget {
       validator: (value) {
         if (value == null) return value;
         if (required && value.isEmpty) {
+          if(label == "Lien du Direct"){
+            return value.startsWith("https://youtu.be/") ? "Un lien doit commencer par https://youtu.be/" : null;
+          }
           return '$label Oblicatoire';
         }
         return null;

@@ -25,7 +25,7 @@ class LatestPostsItem extends StatelessWidget {
         child: Row(children: [
           const Expanded(
             child: Icon(
-              Icons.turned_in_not,
+              Icons.class_,
               color: Colors.white,
               size: 40,
             ),

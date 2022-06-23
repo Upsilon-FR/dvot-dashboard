@@ -18,6 +18,17 @@ class Direct {
       required this.live,
       required this.spectators});
 
+  Map<String, dynamic> toJson(){
+    return{
+      "titre": title,
+      "description": description,
+      "date": date,
+      "auteur": author,
+      "lien": link,
+    };
+  }
+
+
   factory Direct.fromJson(Map<String, dynamic> json) {
     return Direct(
       id: json["id"] as String,
