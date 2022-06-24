@@ -22,7 +22,7 @@ class SideBarElement extends StatelessWidget {
         if(name == "Déconnexion"){
           await AuthService.logout(ApiServices.session["mail"].toString()),
           CustomToast.showSuccessToast(msg: "Utilisateur déconnecté", context: context),
-          Navigator.of(context).pushNamed("/")
+          Navigator.of(context).pushNamedAndRemoveUntil("/", (_) => false),
         }else {
           Navigator.of(context).pushNamed(name)
         }
